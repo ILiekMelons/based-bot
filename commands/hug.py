@@ -3,6 +3,9 @@ import discord
 
 class Main:
     command = "hug"
+    description = "Hug someone!"
+    usage = "x!hug <user>"
+    isNsfw = False
 
     def __init__(self, client: discord.Client):
         self.CLIENT = client
