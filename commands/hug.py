@@ -4,8 +4,8 @@ from classes.BaseCommand import Command
 
 class Main(Command):
     command = "hug"
-    description = "Hug someone!"
-    usage = "x!hug <user>"
+    description = "hug someone"
+    usage = "hug <user>"
 
     async def handle(self, message: discord.Message):
         if len(message.mentions) == 0:
