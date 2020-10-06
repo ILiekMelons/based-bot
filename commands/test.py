@@ -1,14 +1,11 @@
 import discord
+from classes.BaseCommand import Command
 
 
-class Main:
+class Main(Command):
     command = "test"
     description = "testing testing"
-    usage = "x!test"
-    isNsfw = False
-
-    def __init__(self, client: discord.Client):
-        self.CLIENT = client
+    usage = "test"
 
     async def handle(self, message: discord.Message):
         await message.channel.send('hello')

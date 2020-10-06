@@ -17,6 +17,7 @@ class Client(discord.Client):
         for module in os.listdir(os.path.dirname("commands/")):
             if module == '__init__.py' or module[-3:] != '.py':
                 continue
+            print("Loading module " + module)
             module = importlib.import_module("commands." + module.replace(".py", ""))
             mclass = module.Main(self)
             self.COMMANDS.add(mclass)

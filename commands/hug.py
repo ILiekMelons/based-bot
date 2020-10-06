@@ -1,14 +1,11 @@
 import discord
+from classes.BaseCommand import Command
 
 
-class Main:
+class Main(Command):
     command = "hug"
     description = "Hug someone!"
     usage = "x!hug <user>"
-    isNsfw = False
-
-    def __init__(self, client: discord.Client):
-        self.CLIENT = client
 
     async def handle(self, message: discord.Message):
         if len(message.mentions) == 0:
