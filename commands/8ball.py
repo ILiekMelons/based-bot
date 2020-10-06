@@ -27,9 +27,9 @@ responses = [
 
 
 class Main(Command):
-    command = "test"
-    description = "testing testing"
-    usage = "test"
+    command = "8ball"
+    description = "decide your fate"
+    usage = "8ball"
 
     async def handle(self, message: discord.Message):
         await message.channel.send(f'{message.author.mention}: {random.choice(responses)}')
