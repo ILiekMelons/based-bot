@@ -22,7 +22,7 @@ class Client(discord.Client):
         print("loaded commands")
 
     async def on_message(self, message: discord.Message):
-        if message.author == self.user or message.startswith(self.PREFIX):
+        if message.author == self.user or message.content[0:len(self.PREFIX)] != self.PREFIX:
             return
 
         command = message.content.replace(self.PREFIX, "").split()[0]
