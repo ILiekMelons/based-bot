@@ -8,6 +8,7 @@ TOKEN = os.environ['TOKEN']
 class Client(discord.Client):
     COMMANDS = set()
     HANDLERS = set()
+    VARS = []
     PREFIX = "x!"
 
     def __init__(self, *args, loop=None, **kwargs):
