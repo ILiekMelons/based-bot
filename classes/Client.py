@@ -9,7 +9,6 @@ class Client(discord.Client):
     VARS = []
     PREFIX = "x!"
 
-
     def __init__(self, *args, loop=None, **kwargs):
         super().__init__(*args, loop=loop, **kwargs)
 
