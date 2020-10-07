@@ -1,5 +1,6 @@
 import discord
 import random
+import time
 from classes.BaseCommand import Command
 
 responses = [
@@ -30,6 +31,7 @@ class Main(Command):
     command = "8ball"
     description = "decide your fate"
     usage = "8ball"
+    random.seed(time.time())
 
     async def handle(self, message: discord.Message):
         await message.channel.send(f'{message.author.mention}: {random.choice(responses)}')
