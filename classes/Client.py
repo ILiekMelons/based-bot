@@ -22,13 +22,16 @@ class Client(discord.Client):
         print("loaded commands")
 
     async def on_message(self, message: discord.Message):
-        if message.author == self.user or message.content[0:len(self.PREFIX)] != self.PREFIX:
+        try:
+            if message.author == self.user or message.content[0:len(self.PREFIX)] != self.PREFIX:
+                return
+
+            command = message.content.replace(self.PREFIX, "").split()[0]
+            available = [x for x in self.COMMANDS if x.command == command]
+
+            for handler in available:
+                result = await handler.handle(message)
+                if result:
+                    break
+        except IndexError:
             return
-
-        command = message.content.replace(self.PREFIX, "").split()[0]
-        available = [x for x in self.COMMANDS if x.command == command]
-
-        for handler in available:
-            result = await handler.handle(message)
-            if result:
-                break
