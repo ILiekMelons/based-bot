@@ -1,27 +1,11 @@
-import discord
-from classes.BaseCommand import Command
+from classes.BaseRoleplayCommand import BaseRoleplayCommand
 
 
-class Main(Command):
+class Main(BaseRoleplayCommand):
     command = "hug"
-    description = "hug someone"
+    description = "hug your friends"
     usage = "hug <user>"
-
-    async def handle(self, message: discord.Message):
-        if len(message.mentions) == 0:
-            await message.channel.send('You can\'t hug air.')
-            return True
-
-        author = message.author
-        hugged = message.mentions[0]
-
-        if author == hugged:
-            await message.channel.send('It\'s okay, you\'ll find someone soon..')
-            return True
-
-        if hugged == self.CLIENT.user:
-            await message.channel.send('I\'m here for you.')
-            return True
-
-        await message.channel.send(f'{author.mention} hugged {hugged.mention} :heart:')
-        return True
+    no_mention_response = "Mention someone to hug them!"
+    self_response = "It's okay, you'll find someone soon.."
+    bot_response = "I'm here for you."
+    action = "{author} hugged {mentioned} :heart:"
