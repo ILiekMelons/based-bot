@@ -16,12 +16,12 @@ class BaseRoleplayCommand(Command):
         author = message.author
         mentioned = message.mentions[0]
 
-        if author == mentioned and not self.self_response:
+        if author == mentioned and self.self_response:
             await message.channel.send(self.self_response)
             return True
 
-        if mentioned == self.CLIENT.user and not self.bot_response:
-            await message.channel.send(self.self_response)
+        if mentioned == self.CLIENT.user and self.bot_response:
+            await message.channel.send(self.bot_response)
             return True
 
         await message.channel.send(self.action.format(author=author.mention, mentioned=mentioned.mention))
