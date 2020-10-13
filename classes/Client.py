@@ -8,7 +8,7 @@ import time
 class Client(discord.Client):
     COMMANDS = set()
     HANDLERS = set()
-    VARS = []
+    VARS = {}
 
     try:
         PREFIX = os.environ['PREFIX']

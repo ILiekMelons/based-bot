@@ -1,7 +1,8 @@
 from classes.Client import Client
 import discord
 
-class Main:
+
+class BaseEventHandler:
     event = "on_message"
 
     def __init__(self, client: Client):
