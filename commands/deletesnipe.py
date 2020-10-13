@@ -14,7 +14,7 @@ class Main(Command):
             del_message = self.CLIENT.VARS["recently_deleted"][message.guild.id]
             del_author = del_message.author
             author_formatted = f"{del_author.name}#{del_author.discriminator} ({del_author.id})"
-            date_formatted = str(del_message.created_at)
+            date_formatted = str(del_message.created_at) + "UTC"
             await message.channel.send(f"Last deleted message:\n{author_formatted}: {del_message.clean_content}\nSent at {date_formatted}")
         except ValueError:
             await message.channel.send("No recently deleted messages.")
