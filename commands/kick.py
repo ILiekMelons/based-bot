@@ -22,7 +22,7 @@ class Main(Command):
             await message.channel.send("Please mention a user.")
             return True
         except discord.Forbidden as e:
-            print(e)
+            self.logger.debug(e)
             await message.channel.send("I'm not allowed to do that.")
             return True
         return False
