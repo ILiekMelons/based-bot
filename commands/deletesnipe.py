@@ -13,7 +13,7 @@ class Main(Command):
 
         try:
             cid = message.content.split()[1]
-        except ValueError:
+        except KeyError:
             cid = message.channel.id
 
         try:
@@ -22,6 +22,6 @@ class Main(Command):
             author_formatted = f"{del_author.name}#{del_author.discriminator}s"
             date_formatted = str(del_message.created_at) + "UTC"
             await message.channel.send(f"Last deleted message:\n{author_formatted}: {del_message.clean_content}\nSent at {date_formatted}")
-        except ValueError:
+        except KeyError:
             await message.channel.send("No recently deleted messages.")
 
