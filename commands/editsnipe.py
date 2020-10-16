@@ -12,9 +12,12 @@ class Main(Command):
             return
 
         try:
-            cid = message.content.split()[1]
+            cid = int(message.content.split()[1])
         except IndexError:
             cid = message.channel.id
+        except ValueError:
+            await message.channel.send("Please specify a correct channel ID.")
+            return True
 
         try:
             messages = self.CLIENT.VARS["recently_edited"][message.guild.id][cid]
@@ -26,5 +29,6 @@ class Main(Command):
             date_edited = str(new_message.edited_at) + "UTC"
             await message.channel.send(f"Last edited message by {author_formatted}:\n**Old message:** {old_message.clean_content}\n**New message:** {new_message.clean_content}\nSent at {date_formatted}\nEdited at {date_edited}")
         except KeyError:
-            await message.channel.send("No recently edited messages.")
+            await message.channel.send("No recently edited messages for that channel.")
+        return True
 
