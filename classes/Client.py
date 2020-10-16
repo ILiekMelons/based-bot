@@ -66,20 +66,17 @@ class Client(discord.Client):
 
     async def on_message(self, message: discord.Message):
         logger = self.logger
-        try:
-            if message.author == self.user or message.content[0:len(self.PREFIX)] != self.PREFIX:
-                return
-
-            logger.info("Recieved command " + message.content)
-
-            command = message.content.replace(self.PREFIX, "").split()[0]
-            available = [x for x in self.COMMANDS if x.command == command]
-
-            for handler in available:
-                result = await handler.handle(message)
-                if result:
-                    break
-        except IndexError:
+        if message.author == self.user or message.content[0:len(self.PREFIX)] != self.PREFIX:
             return
+
+        logger.info("Recieved command " + message.content)
+
+        command = message.content.replace(self.PREFIX, "").split()[0]
+        available = [x for x in self.COMMANDS if x.command == command]
+
+        for handler in available:
+            result = await handler.handle(message)
+            if result:
+                break
 
 

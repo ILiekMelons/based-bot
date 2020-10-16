@@ -13,7 +13,7 @@ class Main(Command):
 
         try:
             cid = message.content.split()[1]
-        except KeyError:
+        except IndexError:
             cid = message.channel.id
 
         try:
