@@ -15,4 +15,9 @@ class Main(BaseEventHandler):
             client_vars["recently_edited"] = {}
 
         recently_edited = client_vars["recently_edited"]
-        recently_edited[old_message.guild.id] = [old_message, new_message]
+
+        if old_message.guild.id not in recently_edited:
+            recently_edited[old_message.guild.id] = {}
+
+        server_edited = recently_edited[old_message.guild.id]
+        server_edited[old_message.channel.id] = [old_message, new_message]
