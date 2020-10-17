@@ -5,7 +5,7 @@ from classes.BaseCommand import Command
 class Main(Command):
     command = "editsnipe"
     description = "ruin your friendships with this command"
-    usage = "editsnipe"
+    usage = "editsnipe <channel id>"
 
     async def handle(self, message: discord.Message):
         if not message.guild:
