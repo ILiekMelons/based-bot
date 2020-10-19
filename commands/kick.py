@@ -1,11 +1,14 @@
 import discord
-from classes.BaseCommand import Command
+from classes.BaseCommand import BaseCommand
+from classes.CommandInfo import CommandInfo
 
 
-class Main(Command):
-    command = "kick"
-    description = "kick people you don't like"
-    usage = "kick <user>"
+class Main(BaseCommand):
+    info = CommandInfo(
+        "kick",
+        "kick <user>",
+        short_description="kick people you don't like"
+    )
 
     async def handle(self, message: discord.Message):
         permissions = message.channel.permissions_for(message.author)

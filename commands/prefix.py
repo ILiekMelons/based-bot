@@ -1,8 +1,11 @@
 import discord
-from classes.BaseCommand import Command
+from classes.BaseCommand import BaseCommand
+from classes.CommandInfo import CommandInfo
 
 
-class Main(Command):
-    command = "changeprefix"
-    description = "change the prefix"
-    usage = "changeprefix <newprefix>"
+class Main(BaseCommand):
+    info = CommandInfo(
+        "changeprefix",
+        "changeprefix <prefix>",
+        short_description="Changes this server's prefix."
+    )

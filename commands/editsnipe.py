@@ -1,11 +1,15 @@
 import discord
-from classes.BaseCommand import Command
+from classes.BaseCommand import BaseCommand
+from classes.CommandInfo import CommandInfo
 
 
-class Main(Command):
-    command = "editsnipe"
-    description = "ruin your friendships with this command"
-    usage = "editsnipe <channel id>"
+class Main(BaseCommand):
+    info = CommandInfo(
+        "editsnipe",
+        "editsnipe <channel id?>",
+        short_description="ruin your friendships",
+        long_description="Retrieves the latest edited message."
+    )
 
     async def handle(self, message: discord.Message):
         if not message.guild:

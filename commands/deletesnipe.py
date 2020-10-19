@@ -1,11 +1,15 @@
 import discord
-from classes.BaseCommand import Command
+from classes.BaseCommand import BaseCommand
+from classes.CommandInfo import CommandInfo
 
 
-class Main(Command):
-    command = "deletesnipe"
-    description = "ruin your friendships with this command"
-    usage = "deletesnipe <channel id>"
+class Main(BaseCommand):
+    info = CommandInfo(
+        "deletesnipe",
+        "deletesnipe <channel id?>",
+        short_description="ruin your friendships",
+        long_description="Retrieves the latest deleted message."
+    )
 
     async def handle(self, message: discord.Message):
         if not message.guild:

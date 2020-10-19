@@ -1,7 +1,8 @@
 import discord
 import random
 import time
-from classes.BaseCommand import Command
+from classes.BaseCommand import BaseCommand
+from classes.CommandInfo import CommandInfo
 
 responses = [
         "As I see it, yes",
@@ -27,10 +28,12 @@ responses = [
 ]
 
 
-class Main(Command):
-    command = "8ball"
-    description = "decide your fate"
-    usage = "8ball"
+class Main(BaseCommand):
+    info = CommandInfo(
+        "8ball",
+        short_description="decide your fate"
+    )
+
     random.seed(time.time())
 
     async def handle(self, message: discord.Message):

@@ -1,11 +1,14 @@
 import discord
-from classes.BaseCommand import Command
+from classes.BaseCommand import BaseCommand
+from classes.CommandInfo import CommandInfo
 
 
-class Main(Command):
-    command = "ban"
-    description = "ban people you don't like"
-    usage = "ban <user>"
+class Main(BaseCommand):
+    info = CommandInfo(
+        "ban",
+        "ban <user>",
+        short_description="ban people you don't like"
+    )
 
     async def handle(self, message: discord.Message):
         permissions = message.channel.permissions_for(message.author)
